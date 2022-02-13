@@ -1,0 +1,79 @@
+SOLUTION 1
+
+ALGORITHM distinct_sum_array
+
+VAR
+
+set1: ARRAY_OF INTEGER[5];
+set2: ARRAY_OF INTEGER[5];
+i,j: INTEGER;
+sum: INTEGER:= 0;
+
+BEGIN
+
+WHILE(i < set1.length) DO
+  WHILE(j < set2.length) DO
+    IF(set1[i] <> set2[j]) THEN
+      sum:= sum + set1[i];
+    END_IF
+  END_WHILE
+END_WHILE
+
+WHILE(j < set2.length) DO
+  WHILE(i < set1.length) DO
+    IF(set2[j] <> set1[i]) THEN
+      sum:= sum + set2[j];
+    END_IF
+  END_WHILE
+END_WHILE
+
+Write("Output is ", sum);
+
+END
+
+
+SOLUTION 2
+
+ALGORITHM distinct_sum_hash
+
+VAR
+
+set1: HASH_TABLE<INTEGER, STRING>;
+
+set1.insert(3, "three");
+set1.insert(1, "one");
+set1.insert(7, "seven");
+set1.insert(9, "nine");
+Write(set1)
+
+set2: HASH_TABLE<INTEGER, STRING>;
+
+set2.insert(2, "three");
+set2.insert(4, "one");
+set2.insert(1, "seven");
+set2.insert(9, "nine");
+set2.insert(3, "three");
+Write(set2)
+
+i,j: INTEGER
+sum, count: INTEGER:= 0;
+
+BEGIN
+FOR i FROM 0 TO set1.length-1 STEP1 DO
+   IF((set1.lookup[i] <> set2.lookup[j]) = TRUE) THEN
+      set1.insert(set[i], count+1);
+      sum:= sum + set1.lookup[i];
+   END_IF
+END_FOR
+
+FOR j FROM 0 TO set2.length-1 STEP1 DO
+   IF((set2.lookup[j] <> set1.lookup[i]) = TRUE) THEN
+      set2.insert(set[j], count+1);
+      sum:= sum + set2.lookup[j];
+   END_IF
+END_FOR
+
+Write("Output is ", sum);
+
+END
+
